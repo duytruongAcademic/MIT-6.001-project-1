@@ -1,5 +1,6 @@
 # MIT-6.002-Project-1
 Brute Force and Greedy Algorithm
+
 A colony of Aucks (super-intelligent alien bioengineers) has landed on Earth 
 and has created new species of farm animals! The Aucks are performing their experiments on Earth, 
 and plan on transporting the mutant animals back to their home planet of Aurock. 
