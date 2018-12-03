@@ -118,7 +118,6 @@ def brute_force_cow_transport(cows,limit=10):
     cowAllList.sort(key=len)
     #loop through the combination trips and return the first set of trips that satisfy the condition.
     for listList in cowAllList:
-        total=[]
         condition= True
         for listE in listList:
             count=0
@@ -127,8 +126,6 @@ def brute_force_cow_transport(cows,limit=10):
             if count>limit:
                 condition=False
                 break
-            else:
-                total.append(count)
         if condition:
             return listList
     
