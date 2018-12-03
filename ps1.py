@@ -54,22 +54,30 @@ def greedy_cow_transport(cows,limit=10):
     transported on a particular trip and the overall list containing all the
     trips
     """
+    #sort the keys of dictionary cow and put them into a list
     cow = sorted(cows,key=cows.get,reverse=True)
-
+    #create an empty list to append a final list of appropriate keys
     result = []
-    while True:        
+    while True:
+        #create an empty list containing elements of the given cow dictionary
         trip = []
+        #create a counter to start counting the total weights for each trip
         totalvalue = 0
         for i in cow:            
             if totalvalue + cows[i] <= limit:
+                #append to the trip list if the total weights are less or equal than the limit for each trip.
                 trip.append(i)
                 totalvalue += cows[i]
+        #append appropriate trip to the final list
         result.append(trip)
+        #create an empty list that tells the function to pick up elements that are not included in the first trip
         temp=[]
         for i in cow:
             if i not in trip:
-               temp.append(i) 
+               temp.append(i)
+        #Initialize the second "while true" loop by replacing the original list with list that contains only elements that are not included in the first trip
         cow=temp
+        #if all elements are included in the trip lists, break out the loop
         if len(cow)==0:
             break
     return result
@@ -100,13 +108,15 @@ def brute_force_cow_transport(cows,limit=10):
     transported on a particular trip and the overall list containing all the
     trips
     """
+    #create a list containing the keys of dictionary cow
     cowList=list(cows.keys())
-    #using get_partitions() function to generate all possible combinations
+    #using get_partitions() function to generate all possible combinations and append them into a list
     cowAllList=[]
     for item in get_partitions(cowList):
         cowAllList.append(item)
-    #create a copy of the combinations and sort low-High on number of element in list'
+    #create a copy of the combinations and sort low-high on number of element in list'
     cowAllList.sort(key=len)
+    #loop through the combination trips and return the first set of trips that satisfy the condition.
     for listList in cowAllList:
         total=[]
         condition= True
