@@ -21,14 +21,14 @@ def load_cows(filename):
     a dictionary of cow name (string), weight (int) pairs
     """
 
-    cow_dict = dict()
+    cowDict = dict()
 
     f = open(filename, 'r')
     
     for line in f:
-        line_data = line.split(',')
-        cow_dict[line_data[0]] = int(line_data[1])
-    return cow_dict
+        lineData = line.split(',')
+        cowDict[lineData[0]] = int(lineData[1])
+    return cowDict
 
 
 # Problem 1
@@ -62,12 +62,12 @@ def greedy_cow_transport(cows,limit=10):
         #create an empty list containing elements of the given cow dictionary
         trip = []
         #create a counter to start counting the total weights for each trip
-        totalvalue = 0
+        totalValue = 0
         for i in cow:            
             if totalvalue + cows[i] <= limit:
                 #append to the trip list if the total weights are less or equal than the limit for each trip.
                 trip.append(i)
-                totalvalue += cows[i]
+                totalValue += cows[i]
         #append appropriate trip to the final list
         result.append(trip)
         #create an empty list that tells the function to pick up elements that are not included in the first trip
@@ -117,17 +117,17 @@ def brute_force_cow_transport(cows,limit=10):
     #create a copy of the combinations and sort low-high on number of element in list'
     cowAllList.sort(key=len)
     #loop through the combination trips and return the first set of trips that satisfy the condition.
-    for listList in cowAllList:
+    for listInList in cowAllList:
         condition= True
-        for listE in listList:
+        for listElement in listInList:
             count=0
-            for E in listE:
+            for element in listElement:
                 count=count + cows[E]
             if count>limit:
                 condition=False
                 break
         if condition:
-            return listList
+            return listInList
     
             
 
